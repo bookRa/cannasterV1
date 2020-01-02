@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { useContext, useState } from 'react'
-import { MainDispatch } from "../Layout/MainPage";
+import { useMainDispatch } from "../Layout/MainPageContext";
 import {Search, Grid, Header, Segment} from 'semantic-ui-react'
 import {IProduct} from '../Interfaces/CommonInterfaces'
 import * as prodApi from '../API/ProdSearch'
@@ -26,13 +26,16 @@ const marshallProductToResult = (product: IProduct):ISearchResult =>({
 })
 
 export const SearchBar = () => {
-    const dispatch = useContext(MainDispatch)
+    const dispatch = useMainDispatch()
     const allProducts: IProduct[] = prodApi.getAllProducts()
 
     const [searchVal, setSearchVal] = useState("")
     const [isLoading, setLoading] = useState(false)
     const [results, setResults] = useState([] as ISearchResult[])
-    const handleResultSelect = (e:any, {result}:{result: ISearchResult}) => dispatch({type:"SEARCH-PRODUCT", payload: marshalResultToProduct(result)})
+    const handleResultSelect = (e:any, {result}:{result: ISearchResult}) => {
+        dispatch({type:"SEARCH-PRODUCT", payload: marshalResultToProduct(result)})
+        setSearchVal("")
+    }
 
     // TODO: make this an API call
     const handleSearchChange = (e:any, {value}: {value?:string}) =>{ 

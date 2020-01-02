@@ -25,13 +25,3 @@ export interface UpdateProductCountAction extends IAction{
 interface ShowProductModal extends IAction{
     payload: IProduct
 }
-
-/* Typeguard Functions */
-
-export function isSearchProductAction(action: IAction): action is SearchProductAction {
-    return action.type === "SEARCH-PRODUCT"
-}
-
-export function isUpdateProductCountAction(action: IAction): action is UpdateProductCountAction {
-    return action.type === "UPDATE-PRODUCT-COUNT"
-}

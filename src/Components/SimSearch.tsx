@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { useContext } from 'react'
 import { IProduct } from "../Interfaces/CommonInterfaces"
 import { useMainDispatch, useMainState } from "../Layout/MainPageContext"
-import { Segment, Card, Image, Button, Header } from "semantic-ui-react"
+import { Segment, Card, Image, Button, Header, Label, Divider } from "semantic-ui-react"
 
 
 export const SimSearch = () => {
@@ -22,17 +22,20 @@ export const SimSearch = () => {
                                 src={prod.image}
                             />
                             <Card.Header>{prod.name}</Card.Header>
-                            <Card.Meta color="green">${prod.price}</Card.Meta>
+                            <Card.Meta color="green">
+                                {prod.categories.map(c => <Label key={c}>{c}</Label>)}
+                            </Card.Meta>
                             <Card.Description>
                                 {prod.description}
+                                <Divider/>
+                                {prod.properties.map(p => <Label key={p}>{p}</Label>)}
                             </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                            <div className='ui one buttons'>
-                                <Button basic onClick={()=>addToCannaster(prod)} color='green'>
+                            <Label tag size='large' floated='left'>${prod.price}</Label>
+                                <Button floated='right' basic onClick={()=>addToCannaster(prod)} color='green'>
                                     Add to Cannaster
                                 </Button>
-                            </div>
                         </Card.Content>
                     </Card>
                 ))}

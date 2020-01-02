@@ -12,7 +12,7 @@ export const Cannaster: React.FC = () => {
     return (
         <>
             <Header as='h3'>Cannaster</Header>
-            <Card.Group style={{ overflow: 'auto', maxHeight: '85vh' }} divided>
+            <Card.Group style={{ overflow: 'auto', maxHeight: '85vh' }}>
                 {cannaster.map(product => (
                     <Card key={product.id}>
                         <Card.Content>
@@ -23,8 +23,7 @@ export const Cannaster: React.FC = () => {
                             />
                             <Card.Header>{product.name}</Card.Header>
                             <Card.Meta>
-                                <Label content="category1" />
-                                <Label content="category2" />
+                                {product.categories && product.categories.map(c => <Label key={c}>{c}</Label>)}
                             </Card.Meta>
                             <Card.Description>
                                 <Label floated='left'>${product.price} x {product.quantity}</Label>

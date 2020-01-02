@@ -6,7 +6,7 @@ import {IProduct} from '../Interfaces/CommonInterfaces'
 import * as prodApi from '../API/ProdSearch'
 import { SearchProductAction } from '../Interfaces/MainDispatchers';
 
-interface ISearchResult extends Omit<IProduct, 'name' | 'price'> {title: string, price: string}
+interface ISearchResult extends Omit<IProduct,'price'> {title: string, price: string}
 
 const marshalResultToProduct = (result: ISearchResult):IProduct =>{
     return {
@@ -14,7 +14,9 @@ const marshalResultToProduct = (result: ISearchResult):IProduct =>{
         description: result.description,
         id: result.id,
         image: result.image,
-        price: Number(result.price.slice(1))
+        price: Number(result.price.slice(1)),
+        categories: result.categories,
+        properties: result.properties
     }
 }
 

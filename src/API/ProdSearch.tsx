@@ -3,15 +3,15 @@ import {IProduct, ICannasterItem} from "../Interfaces/CommonInterfaces"
 import _ from 'lodash'
 
 // currently all stubbed out with fake data
-export class ProductAPI {
-    getAllProducts():IProduct[]{
+// export namespace ProductAPI {
+    export function getAllProducts():IProduct[]{
          return products as IProduct[]
     }
 
-    searchProduct(product: IProduct): IProduct[]{
-        return _.sampleSize(products, 5)
+    export function searchProduct(product: IProduct): IProduct[]{
+        return [product, ..._.sampleSize(products, 5).filter(p => p.id !== product.id)]
     }
-}
+// }
 
 
 

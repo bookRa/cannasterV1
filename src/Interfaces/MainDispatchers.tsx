@@ -2,7 +2,7 @@
 import {IProduct} from './CommonInterfaces'
 
 export interface IAction {
-    type: string
+    type: "SEARCH-PRODUCT" | "UPDATE-PRODUCT-COUNT"
 }
 
 export interface SearchProductAction extends IAction {

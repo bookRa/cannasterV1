@@ -5,18 +5,19 @@ import { IProduct, ICannasterItem, IMainState } from "../Interfaces/CommonInterf
 import {
      IAction,
      isSearchProductAction,
-     isUpdateProductCountAction
+     isUpdateProductCountAction,
+     SearchProductAction,
+     UpdateProductCountAction
  } from "../Interfaces/MainDispatchers"
-import { ProductAPI } from "../API/ProdSearch";
-
-const prodApi = new ProductAPI()
+import * as prodApi from "../API/ProdSearch";
+import {SearchBar} from "../Components/SearchBar"
 
 const initialState: IMainState = { cannaster: [], simSearch: [] }
 
 // @TODO breakup into reducers for different components
 function reducer(state: IMainState, action: IAction) {
     if (isSearchProductAction(action)) {
-        return { cannaster: state.cannaster, simSearch: [...prodApi.searchProduct(action.payload), ...state.simSearch,] }
+        return { cannaster: state.cannaster, simSearch: [...prodApi.searchProduct(action.payload)] }
     }
     if (isUpdateProductCountAction(action)) {
         const newCannaster = [...state.cannaster]
@@ -42,11 +43,10 @@ function reducer(state: IMainState, action: IAction) {
 }
 
 
-export const MainDispatch = React.createContext({} as Dispatch<IAction>)
+export const MainDispatch = React.createContext({} as Dispatch<SearchProductAction | UpdateProductCountAction>)
 
 const MainPage = () => {
 
-    const allProducts: ICannasterItem[] = prodApi.getAllProducts().map(p => ({ ...p, quantity: 100 }))
 
     const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -59,7 +59,7 @@ const MainPage = () => {
             <Container >
                 <Grid>
                     <Grid.Column width={12}>
-                        <Segment color="purple">Search Bar</Segment>
+                        <SearchBar />
                         <Segment color="yellow">Search Results</Segment>
                         <Segment color="orange">Reccs</Segment>
                     </Grid.Column>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Product, CannasterItem } from '../Interfaces/CommonInterfaces'
+import { IProduct, ICannasterItem } from '../Interfaces/CommonInterfaces'
 import { Item, Label, Container, Icon, Header, Button } from 'semantic-ui-react'
 
 interface Props{
-    cannaster: CannasterItem[]
+    cannaster: ICannasterItem[]
 }
 export const Cannaster: React.FC<Props> = (props) => {
     const {cannaster} = props

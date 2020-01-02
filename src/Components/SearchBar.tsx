@@ -26,7 +26,7 @@ const marshallProductToResult = (product: IProduct):ISearchResult =>({
 })
 
 export const SearchBar = () => {
-    const dispatch = useMainDispatch()
+    const {dispatch} = useMainDispatch()
     const allProducts: IProduct[] = prodApi.getAllProducts()
 
     const [searchVal, setSearchVal] = useState("")

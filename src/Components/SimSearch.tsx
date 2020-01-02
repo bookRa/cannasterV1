@@ -6,7 +6,7 @@ import { Segment, Card, Image, Button, Header } from "semantic-ui-react"
 
 
 export const SimSearch = () => {
-    const dispatch = useMainDispatch()
+    const {dispatch} = useMainDispatch()
     const simSearch = useMainState().simSearch
     const addToCannaster = (product: IProduct) =>{
         dispatch({type:"UPDATE-PRODUCT-COUNT", payload:{product, quantity:1}})

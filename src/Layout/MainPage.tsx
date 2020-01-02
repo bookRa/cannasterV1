@@ -23,13 +23,11 @@ const MainPage = () => {
             <Container >
                 <Grid divided>
                     <Grid.Column width={12}>
-                        {/* <Segment> */}
                             <SearchBar />
                             <Divider horizontal>Search Results</Divider>
                             <SimSearch />
                             <Divider horizontal>Other Recommendations</Divider>
                             <Segment color="orange">Reccs</Segment>
-                        {/* </Segment> */}
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <Cannaster />

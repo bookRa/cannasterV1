@@ -30,10 +30,11 @@ function mainReducer(state: IMainState, action: IAction):IMainState {
         const updatedQty = action.payload.quantity
         const existingIdx = newCannaster.findIndex(item => item.id === currId)
         if (existingIdx > -1) {
-            if (updatedQty === 0) { // prduct was deleted from cannaster
+            const newQuantity = newCannaster[existingIdx].quantity + updatedQty
+            if (updatedQty === 0 || newQuantity === 0) { // prduct was deleted from cannaster
                 newCannaster.splice(existingIdx, 1)
             } else {
-                newCannaster[existingIdx].quantity += updatedQty
+                newCannaster[existingIdx].quantity = newQuantity
             }
         } else {
             const newProduct: ICannasterItem = { ...action.payload.product, quantity: action.payload.quantity }
@@ -69,11 +70,30 @@ function useMainState(){
       }
       return context
 }
+
 function useMainDispatch(){
-    const context = useContext(MainDispatchContext)
-    if (context === undefined) {
+    const dispatch = useContext(MainDispatchContext)
+    if (dispatch === undefined) {
         throw new Error('useCountDispatch must be used within a CountProvider')
       }
-      return context
+    //   Define some common updates
+    const incrementProduct = (product: IProduct) => dispatch({type:'UPDATE-PRODUCT-COUNT', payload:{
+        product,
+        quantity: 1
+    }})
+    const decrementProduct = (product: IProduct) => dispatch({type:'UPDATE-PRODUCT-COUNT', payload:{
+        product,
+        quantity: -1
+    }})
+    const deleteProduct = (product: IProduct) => dispatch({type:'UPDATE-PRODUCT-COUNT', payload:{
+        product,
+        quantity: 0
+    }})
+      return {
+          dispatch,
+          incrementProduct,
+          decrementProduct,
+          deleteProduct
+        }
 }
 export {MainContextProvider, useMainState, useMainDispatch}

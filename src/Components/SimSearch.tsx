@@ -1,8 +1,7 @@
-import _ from 'lodash'
-import React, { useContext } from 'react'
+import React from 'react'
 import { IProduct } from "../Interfaces/CommonInterfaces"
 import { useMainDispatch, useMainState } from "../Layout/MainPageContext"
-import { Segment, Card, Image, Button, Header, Label, Divider } from "semantic-ui-react"
+import { Card, Image, Button, Header, Label, Divider } from "semantic-ui-react"
 
 
 export const SimSearch = () => {

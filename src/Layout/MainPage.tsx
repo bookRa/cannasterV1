@@ -1,16 +1,10 @@
-import React, { Dispatch, useEffect, useState, useReducer } from "react";
+import React, { useEffect } from "react";
 import { Grid, Segment, Container, Divider } from "semantic-ui-react"
 import { Cannaster } from "../Components/Cannaster";
-import { SearchBar } from "../Components/SearchBar"
+import { SearchBar } from "../Components/ProductSearch"
 import { SimSearch } from "../Components/SimSearch"
-import { IProduct, ICannasterItem, IMainState } from "../Interfaces/CommonInterfaces"
-import {
-    IAction,
-    SearchProductAction,
-    UpdateProductCountAction
-} from "../Interfaces/MainDispatchers"
-import * as prodApi from "../API/ProdSearch";
 import { MainContextProvider } from "./MainPageContext";
+import { NavMenu} from "./NavMenu"
 
 const MainPage = () => {
 
@@ -20,6 +14,7 @@ const MainPage = () => {
 
     return (
         <MainContextProvider>
+            <NavMenu />
             <Container >
                 <Grid divided>
                     <Grid.Column width={12}>

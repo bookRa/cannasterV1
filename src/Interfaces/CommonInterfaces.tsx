@@ -20,7 +20,6 @@ export enum IProperty{
     "Clearheaded",
     "Delicious",
     "Pain",
-    "CBD",
     "Laughing",
     "Creative",
     "Sleep",
@@ -36,7 +35,11 @@ export interface IProduct{
     properties: IProperty[]
 
 }
-
+export interface ISearchWithFilters{
+    product?: IProduct,
+    categories?: ICategory[],
+    properties?: IProperty[]
+}
 export interface ICannasterItem extends IProduct{
     quantity: number
 }

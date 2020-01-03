@@ -1,12 +1,12 @@
 // Action Interfaces for Dispatcher
-import {IProduct} from './CommonInterfaces'
+import {IProduct, ISearchWithFilters} from './CommonInterfaces'
 
 export interface IAction {
     type: "SEARCH-PRODUCT" | "UPDATE-PRODUCT-COUNT"
 }
 
 export interface SearchProductAction extends IAction {
-    payload: IProduct
+    payload: ISearchWithFilters
 }
 
 // TODO: Search By Keyword

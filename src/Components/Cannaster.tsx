@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { IProduct, ICannasterItem } from '../Interfaces/CommonInterfaces'
-import { Item, Label, Image, Container, Icon, Header, Button, Card, Segment } from 'semantic-ui-react'
+import React from 'react'
+import { Label, Image, Icon, Header, Button, Card, Segment } from 'semantic-ui-react'
 import { useMainDispatch, useMainState } from "../Layout/MainPageContext";
 import _ from 'lodash'
 export const Cannaster: React.FC = () => {
     const cannaster = useMainState().cannaster
     const { incrementProduct, decrementProduct, deleteProduct } = useMainDispatch()
-
-    const [total, setTotal] = useState(0.00)
 
     return (
         <>

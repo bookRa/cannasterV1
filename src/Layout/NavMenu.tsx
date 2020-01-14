@@ -1,7 +1,10 @@
 import React from 'react'
 import { Menu, Header } from 'semantic-ui-react'
 
-export const NavMenu = () => {
+interface NavBarProps{
+    toggleCannaster: ()=> void
+}
+export const NavMenu: React.FC<NavBarProps> = (props) => {
     return(
         <Menu>
             <Menu.Item
@@ -11,6 +14,13 @@ export const NavMenu = () => {
                 <Header as='h1' style={{fontFamily:'cursive', color:'MediumSeaGreen'}}>Cannaster</Header>
             </Menu.Item>
             <Menu.Menu position='right'>
+                <Menu.Item
+                color='olive'
+                name='toggleCannaster'
+                onClick={props.toggleCannaster}
+                >
+                    Toggle Cannaster
+                </Menu.Item>
                 <Menu.Item
                     color='pink'
                     name='signup'

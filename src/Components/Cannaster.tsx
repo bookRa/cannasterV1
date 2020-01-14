@@ -7,7 +7,7 @@ export const Cannaster: React.FC = () => {
     const { incrementProduct, decrementProduct, deleteProduct } = useMainDispatch()
 
     return (
-        <>
+        <Segment>
             <Header as='h3'>Cannaster</Header>
             <Card.Group style={{ overflow: 'auto', maxHeight: '85vh' }}>
                 {cannaster.map(product => (
@@ -47,7 +47,7 @@ export const Cannaster: React.FC = () => {
                     </Button.Content>
                 </Button>
             </Segment>
-        </>
+        </Segment>
     )
 
 }

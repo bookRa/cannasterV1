@@ -79,7 +79,7 @@ export const SearchBar = () => {
     }
 
     return (
-        <Grid columns='2'>
+        <Grid stackable columns='2'>
             <Grid.Column width={6}>
                 <Header as='h3'>Search a Product</Header>
                  <Search
